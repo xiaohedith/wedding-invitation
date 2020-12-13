@@ -5,4 +5,8 @@ A crypto trading app demo to show a real-time trading dashboard for three differ
 The complete crypto-trading demo has two components:
 
 - A backend built with Macrometa using a Document Collection, multiple Streams, and a Stream Worker.
-- A he
+- A headless frontend written in ReactJS.
+
+Prerequisite: 
+
+- Configure the backend, refer to the [getting started guide](https://macrometa.com/docs/apps/c
