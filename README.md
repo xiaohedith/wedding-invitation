@@ -16,4 +16,8 @@ The below steps will describe on how to set up the frontend.
 
 ## 1. Clone or Fork the Repo
 
-`g
+`git clone git@github.com:Macrometacorp/tutorial-cryptotrading.git` or click on the `Fork` button in the upper right hand corner of this repo.
+
+## 2. Run the App Locally
+
+In your
