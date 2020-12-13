@@ -9,4 +9,11 @@ The complete crypto-trading demo has two components:
 
 Prerequisite: 
 
-- Configure the backend, refer to the [getting started guide](https://macrometa.com/docs/apps/c
+- Configure the backend, refer to the [getting started guide](https://macrometa.com/docs/apps/crypto-trading).
+- `nodejs` and `npm` must be installed on your system.
+
+The below steps will describe on how to set up the frontend.
+
+## 1. Clone or Fork the Repo
+
+`g
