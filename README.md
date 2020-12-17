@@ -20,4 +20,7 @@ The below steps will describe on how to set up the frontend.
 
 ## 2. Run the App Locally
 
-In your
+In your terminal, navigate to the crypto-demo folder and run `npm install`
+
+Once all the node modules have been installed, run `npm start` to start the development server.
+
