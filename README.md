@@ -24,3 +24,4 @@ In your terminal, navigate to the crypto-demo folder and run `npm install`
 
 Once all the node modules have been installed, run `npm start` to start the development server.
 
+This starts a local development server on `localhost:<some_port>`. You can log into the app with your Macrometa credentials. You will need to [configure the Crypto Ap
