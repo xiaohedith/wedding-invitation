@@ -26,4 +26,4 @@ Once all the node modules have been installed, run `npm start` to start the deve
 
 This starts a local development server on `localhost:<some_port>`. You can log into the app with your Macrometa credentials. You will need to [configure the Crypto App backend](https://macrometa.com/docs/apps/crypto-trading) for the app to work.
 
-We also have a [Crypto Trading App frontend](https://macrometacorp.github.io/tutorial
+We also have a [Crypto Trading App frontend](https://macrometacorp.github.io/tutorial-cryptotrading/) already deployed. You can log in with the pre-filled email and password to see the app working, or use your own Macrometa account email and password a
