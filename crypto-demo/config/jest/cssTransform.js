@@ -8,4 +8,7 @@ module.exports = {
     return 'module.exports = {};';
   },
   getCacheKey() {
-    // 
+    // The output is always the same.
+    return 'cssTransform';
+  },
+};
