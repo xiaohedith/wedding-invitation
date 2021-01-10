@@ -11,4 +11,6 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
-const ManifestPlugin =
+const ManifestPlugin = require('webpack-manifest-plugin');
+const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
+const ModuleNotFoundPlugin = require('react-
