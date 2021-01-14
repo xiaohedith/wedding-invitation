@@ -13,4 +13,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
-const ModuleNotFoundPlugin = require('react-
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+
+// Webpack uses `publicPath` to determine where the app is being served from.
+// In development, we always serve from the root. T
