@@ -46,4 +46,8 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
       loader: require.resolve('postcss-loader'),
       options: {
         // Necessary for external CSS imports to work
-        // ht
+        // https://github.com/facebook/create-react-app/issues/2677
+        ident: 'postcss',
+        plugins: () => [
+          require('postcss-flexbugs-fixes'),
+          
