@@ -41,4 +41,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     },
     {
       // Options for PostCSS as we reference these options twice
-      // Adds vendor prefixing based on your specified browser support
+      // Adds vendor prefixing based on your specified browser support in
+      // package.json
+      loader: require.resolve('postcss-loader'),
+      options: {
+        // Necessary for external CSS imports to work
+        // ht
