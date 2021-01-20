@@ -36,4 +36,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
     require.resolve('style-loader'),
     {
-      loader: require.resolve('css-lo
+      loader: require.resolve('css-loader'),
+      options: cssOptions,
+    },
+    {
+      // Options for PostCSS as we reference these options twice
+      // Adds vendor prefixing based on your specified browser support
