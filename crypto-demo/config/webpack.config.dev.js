@@ -67,4 +67,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 };
 
 // This is the development configuration.
-// It 
+// It is focused on developer experience and fast rebuilds.
+// The production configuration is different and lives in a separate file.
+module.exports = {
+  mode: 'developmen
