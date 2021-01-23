@@ -58,4 +58,13 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
           }),
         ],
       },
-    }
+    },
+  ];
+  if (preProcessor) {
+    loaders.push(require.resolve(preProcessor));
+  }
+  return loaders;
+};
+
+// This is the development configuration.
+// It 
