@@ -92,3 +92,9 @@ module.exports = {
     paths.appIndexJs,
     // We include the app code last so that if there is a runtime error during
     // initialization, it doesn't blow up the WebpackDevServer client, and
+    // changing JS code would still trigger a refresh.
+  ],
+  output: {
+    // Add /* filename */ comments to generated require()s in the output.
+    pathinfo: true,
+   
