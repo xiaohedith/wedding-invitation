@@ -104,4 +104,7 @@ module.exports = {
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'c8demo/crypto/static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
-    pu
+    publicPath: publicPath,
+    // Point sourcemap entries to original disk location (format as URL on Windows)
+    devtoolModuleFilenameTemplate: info =>
+      path.resolve(info.a
