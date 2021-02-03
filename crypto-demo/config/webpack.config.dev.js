@@ -101,4 +101,7 @@ module.exports = {
     // served by WebpackDevServer in development. This is the JS bundle
     // containing code from all our entry points, and the Webpack runtime.
     filename: 'c8demo/crypto/static/js/bundle.js',
-    // There are also additional JS chunk files if yo
+    // There are also additional JS chunk files if you use code splitting.
+    chunkFilename: 'c8demo/crypto/static/js/[name].chunk.js',
+    // This is the URL that app is served from. We use "/" in development.
+    pu
