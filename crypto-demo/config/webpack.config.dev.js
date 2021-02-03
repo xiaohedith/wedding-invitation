@@ -99,4 +99,6 @@ module.exports = {
     pathinfo: true,
     // This does not produce a real file. It's just the virtual path that is
     // served by WebpackDevServer in development. This is the JS bundle
-    
+    // containing code from all our entry points, and the Webpack runtime.
+    filename: 'c8demo/crypto/static/js/bundle.js',
+    // There are also additional JS chunk files if yo
