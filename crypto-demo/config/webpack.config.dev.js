@@ -144,3 +144,6 @@ module.exports = {
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
+      // guards against forgotten dependencies and such.
+      PnpWebpackPlugin,
+      // Prevents users from importing files from outside of src/ (or node_modu
