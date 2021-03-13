@@ -159,3 +159,10 @@ module.exports = {
       // Also related to Plug'n'Play, but this time it tells Webpack to load its loaders
       // from the current package.
       PnpWebpackPlugin.moduleLoader(module),
+    ],
+  },
+  module: {
+    strictExportPresence: true,
+    rules: [
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: fals
