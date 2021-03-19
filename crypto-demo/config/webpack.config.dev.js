@@ -183,4 +183,8 @@ module.exports = {
           },
         ],
         include: paths.appSrc,
-     
+      },
+      {
+        // `mjs` support is still in its infancy in the ecosystem, so we don't
+        // support it.
+        // Modules who define their `browser` or `module` ke
