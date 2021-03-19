@@ -187,4 +187,6 @@ module.exports = {
       {
         // `mjs` support is still in its infancy in the ecosystem, so we don't
         // support it.
-        // Modules who define their `browser` or `module` ke
+        // Modules who define their `browser` or `module` key as `mjs` force
+        // the use of this extension, so we need to tell webpack to fall back
+        // to auto mode (ES Module interop, allows ESM to import Co
