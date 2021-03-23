@@ -208,4 +208,9 @@ module.exports = {
             options: {
               limit: 10000,
               name: 'c8demo/crypto/static/media/[name].[hash:8].[ext]',
-            
+            },
+          },
+          // Process application JS with Babel.
+          // The preset includes JSX, Flow, and some ESnext features.
+          {
+            test: /
