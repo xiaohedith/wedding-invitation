@@ -227,4 +227,10 @@ module.exports = {
                   {
                     loaderMap: {
                       svg: {
-                 
+                        ReactComponent: '@svgr/webpack?-prettier,-svgo![path]',
+                      },
+                    },
+                  },
+                ],
+              ],
+         
