@@ -238,4 +238,8 @@ module.exports = {
               // directory for faster rebuilds.
               cacheDirectory: true,
               // Don't waste time on Gzipping the cache
-              cacheCompression: fa
+              cacheCompression: false,
+            },
+          },
+          // Process any JS outside of the app with Babel.
+          // Unlike the application JS, we only compile the standard ES fe
