@@ -253,4 +253,9 @@ module.exports = {
               compact: false,
               presets: [
                 [
-                  require.resolve(
+                  require.resolve('babel-preset-react-app/dependencies'),
+                  { helpers: true },
+                ],
+              ],
+              cacheDirectory: true,
+              // Don't waste 
