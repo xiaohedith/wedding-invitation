@@ -258,4 +258,8 @@ module.exports = {
                 ],
               ],
               cacheDirectory: true,
-              // Don't waste 
+              // Don't waste time on Gzipping the cache
+              cacheCompression: false,
+
+              // If an error happens in a package, it's possible to be
+              // because i
