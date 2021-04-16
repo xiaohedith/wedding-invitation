@@ -269,4 +269,6 @@ module.exports = {
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.
-          // "css" loader re
+          // "css" loader resolves paths in CSS and adds assets as dependencies.
+          // "style" loader turns CSS into JS modules that inject <style> tags.
+          // In production, we use a plugin to extr
