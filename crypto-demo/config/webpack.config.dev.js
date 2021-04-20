@@ -292,4 +292,6 @@ module.exports = {
             }),
           },
           // Opt-in support for SASS (using .scss or .sass extensions).
-          // Chains
+          // Chains the sass-loader with the css-loader and the style-loader
+          // to immediately apply all styles to the DOM.
+          // By default we support SASS Mo
