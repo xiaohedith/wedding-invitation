@@ -308,4 +308,10 @@ module.exports = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-         
+                modules: true,
+                getLocalIdent: getCSSModuleLocalIdent,
+              },
+              'sass-loader'
+            ),
+          },
+          // "file"
