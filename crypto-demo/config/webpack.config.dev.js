@@ -361,4 +361,6 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     // If you require a missing module and then `npm install` it, you still have
     // to restart the development server for Webpack to discover it. This plugin
-    // makes the discove
+    // makes the discovery automatic so you don't have to restart.
+    // See https://github.com/facebook/create-react-app/issues/186
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
