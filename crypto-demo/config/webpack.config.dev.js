@@ -371,4 +371,8 @@ module.exports = {
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // Generate a manifest file which contains a mapping of all asset filenames
-    // to their
+    // to their corresponding output file so that tools can pick it up without
+    // having to parse `index.html`.
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+      publicPath: publicPa
