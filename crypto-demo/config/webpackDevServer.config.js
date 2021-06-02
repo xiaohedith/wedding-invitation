@@ -17,4 +17,6 @@ module.exports = function(proxy, allowedHost) {
     // websites from potentially accessing local content through DNS rebinding:
     // https://github.com/webpack/webpack-dev-server/issues/887
     // https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a
-  
+    // However, it made several existing use cases such as development in cloud
+    // environment or subdomains in development significantly more complicated:
+   
