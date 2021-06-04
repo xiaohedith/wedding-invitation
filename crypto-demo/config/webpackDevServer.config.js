@@ -23,4 +23,6 @@ module.exports = function(proxy, allowedHost) {
     // https://github.com/facebook/create-react-app/issues/2233
     // While we're investigating better solutions, for now we will take a
     // compromise. Since our WDS configuration only serves files in the `public`
-    // folder we won't consider accessing them a vulnerabi
+    // folder we won't consider accessing them a vulnerability. However, if you
+    // use the `proxy` feature, it gets more dangerous because it can expose
+    // remote code execution vulnerabilities in backends
