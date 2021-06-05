@@ -25,4 +25,6 @@ module.exports = function(proxy, allowedHost) {
     // compromise. Since our WDS configuration only serves files in the `public`
     // folder we won't consider accessing them a vulnerability. However, if you
     // use the `proxy` feature, it gets more dangerous because it can expose
-    // remote code execution vulnerabilities in backends
+    // remote code execution vulnerabilities in backends like Django and Rails.
+    // So we will disable the host check normally, but enable it if you have
+    // specified the `proxy` setting. Finally, we let you o
