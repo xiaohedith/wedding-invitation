@@ -27,4 +27,7 @@ module.exports = function(proxy, allowedHost) {
     // use the `proxy` feature, it gets more dangerous because it can expose
     // remote code execution vulnerabilities in backends like Django and Rails.
     // So we will disable the host check normally, but enable it if you have
-    // specified the `proxy` setting. Finally, we let you o
+    // specified the `proxy` setting. Finally, we let you override it if you
+    // really know what you're doing with a special environment variable.
+    disableHostCheck:
+      !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === 't
