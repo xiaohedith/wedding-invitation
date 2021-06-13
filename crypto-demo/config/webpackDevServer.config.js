@@ -41,4 +41,6 @@ module.exports = function(proxy, allowedHost) {
     // This is confusing because those files won’t automatically be available in
     // production build folder unless we copy them. However, copying the whole
     // project directory is dangerous because we may expose sensitive files.
-    // Instead, we est
+    // Instead, we establish a convention that only files in `public` directory
+    // get served. Our build script will copy `public` into the `build` folder.
+    // In `index.htm
