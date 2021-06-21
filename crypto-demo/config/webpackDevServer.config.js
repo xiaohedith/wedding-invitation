@@ -49,4 +49,7 @@ module.exports = function(proxy, allowedHost) {
     // Note that we only recommend to use `public` folder as an escape hatch
     // for files like `favicon.ico`, `manifest.json`, and libraries that are
     // for some reason broken when imported through Webpack. If you just want to
-    // use an image, put it in `src` a
+    // use an image, put it in `src` and `import` it from JavaScript instead.
+    contentBase: paths.appPublic,
+    // By default files from `contentBase` will not trigger a page reload.
+    watchCon
