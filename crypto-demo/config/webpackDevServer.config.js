@@ -86,4 +86,9 @@ module.exports = function(proxy, allowedHost) {
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons
-        
+        require(paths.proxySetup)(app);
+      }
+
+      // This lets us fetch source contents from webpack for the error overlay
+      app.use(evalSourceMapMiddleware(server));
+     
