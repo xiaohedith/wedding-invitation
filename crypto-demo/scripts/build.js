@@ -21,4 +21,6 @@ const fs = require('fs-extra');
 const webpack = require('webpack');
 const bfj = require('bfj');
 const config = require('../config/webpack.config.prod');
-const paths = r
+const paths = require('../config/paths');
+const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
+const formatWebpackMessages = require('react-dev-util
