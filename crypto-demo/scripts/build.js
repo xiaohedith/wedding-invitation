@@ -45,4 +45,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 }
 
 // Process CLI arguments
-const a
+const argv = process.argv.slice(2);
+const writeStatsJson = argv.indexOf('--stats') !== -1;
+
+// We require that you explictly set browsers and do not fall ba
