@@ -52,4 +52,7 @@ const writeStatsJson = argv.indexOf('--stats') !== -1;
 // browserslist defaults.
 const { checkBrowsers } = require('react-dev-utils/browsersHelper');
 checkBrowsers(paths.appPath, isInteractive)
-  .the
+  .then(() => {
+    // First, read the current file sizes in build directory.
+    // This lets us display how much they changed later.
+    return measu
