@@ -73,4 +73,9 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log(warnings.join('\n\n'));
         console.log(
           '\nSearch for the ' +
-            chalk.underline(chalk.yellow('keywords'
+            chalk.underline(chalk.yellow('keywords')) +
+            ' to learn more about each warning.'
+        );
+        console.log(
+          'To ignore, add ' +
+            chalk.cyan('// eslint-disable-
