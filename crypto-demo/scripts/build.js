@@ -89,4 +89,11 @@ checkBrowsers(paths.appPath, isInteractive)
       printFileSizesAfterBuild(
         stats,
         previousFileSizes,
-        paths.appB
+        paths.appBuild,
+        WARN_AFTER_BUNDLE_GZIP_SIZE,
+        WARN_AFTER_CHUNK_GZIP_SIZE
+      );
+      console.log();
+
+      const appPackage = require(paths.appPackageJson);
+      const publicUrl = paths
