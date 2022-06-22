@@ -115,4 +115,11 @@ checkBrowsers(paths.appPath, isInteractive)
   )
   .catch(err => {
     if (err && err.message) {
-      console.log(err
+      console.log(err.message);
+    }
+    process.exit(1);
+  });
+
+// Create the production build and print the deployment instructions.
+function build(previousFileSizes) {
+  console.
