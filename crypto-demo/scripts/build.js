@@ -127,4 +127,9 @@ function build(previousFileSizes) {
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
- 
+      let messages;
+      if (err) {
+        if (!err.message) {
+          return reject(err);
+        }
+        messages = formatWebpackM
