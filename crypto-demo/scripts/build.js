@@ -132,4 +132,10 @@ function build(previousFileSizes) {
         if (!err.message) {
           return reject(err);
         }
-        messages = formatWebpackM
+        messages = formatWebpackMessages({
+          errors: [err.message],
+          warnings: [],
+        });
+      } else {
+        messages = formatWebpackMessages(
+          stats.toJ
