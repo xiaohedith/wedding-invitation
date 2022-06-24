@@ -143,4 +143,8 @@ function build(previousFileSizes) {
       }
       if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
-        //
+        // of the same problem, but confuse the reader with noise.
+        if (messages.errors.length > 1) {
+          messages.errors.length = 1;
+        }
+        return reje
