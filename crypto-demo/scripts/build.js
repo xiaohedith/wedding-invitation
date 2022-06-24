@@ -138,4 +138,9 @@ function build(previousFileSizes) {
         });
       } else {
         messages = formatWebpackMessages(
-          stats.toJ
+          stats.toJson({ all: false, warnings: true, errors: true })
+        );
+      }
+      if (messages.errors.length) {
+        // Only keep the first error. Others are often indicative
+        //
