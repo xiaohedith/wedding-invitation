@@ -173,4 +173,14 @@ function build(previousFileSizes) {
         return bfj
           .write(paths.appBuild + '/bundle-stats.json', stats.toJson())
           .then(() => resolve(resolveArgs))
-          .catch(error =>
+          .catch(error => reject(new Error(error)));
+      }
+
+      return resolve(resolveArgs);
+    });
+  });
+}
+
+function copyPublicFolder() {
+  fs.copySync(paths.appPublic, paths.appBuild, {
+    dereferenc
