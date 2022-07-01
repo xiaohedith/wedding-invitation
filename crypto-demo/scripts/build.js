@@ -169,4 +169,8 @@ function build(previousFileSizes) {
         previousFileSizes,
         warnings: messages.warnings,
       };
-      if (writeStatsJson
+      if (writeStatsJson) {
+        return bfj
+          .write(paths.appBuild + '/bundle-stats.json', stats.toJson())
+          .then(() => resolve(resolveArgs))
+          .catch(error =>
