@@ -9,4 +9,13 @@ process.env.PUBLIC_URL = '';
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
 process.on('unhandledRejection', err => {
-  throw 
+  throw err;
+});
+
+// Ensure environment variables are read.
+require('../config/env');
+
+
+const jest = require('jest');
+const execSync = require('child_process').execSync;
+let argv = process.
