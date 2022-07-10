@@ -25,4 +25,13 @@ function isInGitRepository() {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
     return true;
   } catch (e) {
-   
+    return false;
+  }
+}
+
+function isInMercurialRepository() {
+  try {
+    execSync('hg --cwd . root', { stdio: 'ignore' });
+    return true;
+  } catch (e) {
+ 
