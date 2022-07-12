@@ -34,4 +34,12 @@ function isInMercurialRepository() {
     execSync('hg --cwd . root', { stdio: 'ignore' });
     return true;
   } catch (e) {
- 
+    return false;
+  }
+}
+
+// Watch unless on CI, in coverage mode, or explicitly running all tests
+if (
+  !process.env.CI &&
+  argv.indexOf('--coverage') === -1 &&
+  argv.inde
