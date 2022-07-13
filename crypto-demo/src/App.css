@@ -27,4 +27,11 @@
 }
 
 .currentValue {
- 
+  opacity: 0.5;
+  margin-top: -4px;
+  margin-right: 18px;
+  width: 62px;
+  font-size: medium;
+  font-weight: 500;
+  color: white;
+  text-align: cen
