@@ -34,4 +34,18 @@
   font-size: medium;
   font-weight: 500;
   color: white;
-  text-align: cen
+  text-align: center
+}
+
+.currentValueText {
+  height: 28px;
+  display: flex;
+  color: #A7CC55;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: 400
+}
+
+.tableContainer {
+  max-height: 550px;
+  overflow-y: 
