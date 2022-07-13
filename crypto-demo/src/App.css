@@ -3,4 +3,16 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-size: 
+  font-size: calc(10px + 2vmin);
+  background-color: black;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftPane {
+  display: flex;
+  flex: 1;
+  flex-direction: col
