@@ -64,4 +64,13 @@
 }
 
 .MuiFormLabel-root-17 {
-  color: rgba(255, 255, 255, 0.54) !impor
+  color: rgba(255, 255, 255, 0.54) !important;
+}
+
+input {
+  color: white !important;
+}
+
+.actions {
+  font-size: 18px
+}
