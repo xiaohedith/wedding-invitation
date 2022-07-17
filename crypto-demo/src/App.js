@@ -384,3 +384,166 @@ class App extends Component {
       },
       showlegend: false,
       title: undefined,
+      paper_bgcolor: "transparent",
+      plot_bgcolor: "transparent",
+      xaxis: {
+        showticklabels: this.state.width >= 1920,
+        tickfont: {
+          color: 'white'
+        },
+        showgrid: true,
+        gridcolor: "#535968", // mm-gray-600
+        fixedrange: false,
+        zerolinecolor: "#535968", // mm-gray-600
+      },
+      yaxis: {
+        tickfont: {
+          color: 'white'
+        },
+        showgrid: true,
+        gridcolor: "#535968",
+        fixedrange: false,
+        zerolinecolor: "#535968" // mm-gray-600
+      }
+    };
+
+    const chartData = getChartData(timestamp, ma, close);
+
+    return (
+      <div key={chartNum} className="h-full flex flex-col text-white pb-[13px] 3xl:pb-[20px] 8xl:pb-[30px]">
+        {/* Title */}
+        <div className="grow bg-mm-gray-800 border border-mm-gray-600 font-extrabold leading-[21px] 3xl:leading-[32px] 8xl:leading-[48px] pl-[11px] 3xl:pl-[16px] 8xl:pl-[24px] pt-[8px] 3xl:pt-[12px] 8xl:pt-[18px] rounded-t-lg text-[14px] 3xl:text-[21px] 8xl:text-[32px]">
+          {heading}
+          <span className="font-medium leading-[21px] 3xl:leading-[32px] 8xl:leading-[48px] text-[12px] 3xl:text-[18px] 8xl:text-[27px]">
+            &nbsp;{subheading}
+          </span>
+
+          <div className="mt-[8px] w-[380px] h-[180px] 3xl:mt-[12px] 3xl:w-[500px] 3xl:h-[260px] 4xl:mt-[16px] 4xl:w-[700px] 4xl:h-[460px] 8xl:mt-[24px] 8xl:w-[1000px] 8xl:h-[700px]">
+            {/* Chart */}
+            <Plot
+              key={chartNum.toString()}
+              data={chartData}
+              layout={chartLayout}
+              useResizeHandler={true}
+              style={{ width: "100%", height: "100%" }}
+              config={{displayModeBar: false}}
+            />
+          </div>
+
+        </div>
+
+        {/* Price */}
+        <div className="bg-mm-gray-800/60 border border-mm-gray-600 font-semibold font-source-code-pro py-[21px] 3xl:py-[32px] 8xl:py-[48px] rounded-b-lg text-[32px] 3xl:text-[48px] 8xl:text-[72px] text-center">
+          {priceLabel}
+        </div>
+      </div>
+    );
+  }
+
+  renderRegionModal() {
+    const { regionModal, availableRegions, selectedRegionUrl } = this.state;
+    return (
+      <Dialog
+        fullWidth
+        open={regionModal}
+      >
+        <DialogTitle id="form-dialog-title">Select Region:</DialogTitle>
+        <DialogContent>
+          <RadioGroup
+            onChange={event => {
+              const { target: { value, labels } } = event;
+              this.setState({ selectedRegionUrl: value, selectedRegionName: labels[0].outerText });
+            }}
+            value={selectedRegionUrl}
+          >
+            {
+              availableRegions.map(region => {
+                const { locationInfo: { city, countrycode }, tags: { url } } = region;
+                const label = `${city}, ${countrycode}`;
+                return <FormControlLabel key={label} value={url} control={<Radio />} label={label} />
+              })
+            }
+          </RadioGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            disabled={!selectedRegionUrl}
+            onClick={() => this.setState({ regionModal: false }, () => { this.selectedRegionLogin() })}
+            size="small" variant="text" color="primary">
+            <span className="actions">CONFIRM</span>
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
+  }
+
+  renderLoginModal() {
+
+    let { loginModal } = this.state;
+    const { classes } = this.props;
+
+    return (
+      <Dialog
+        fullWidth
+        open={loginModal}
+      >
+        <DialogTitle id="form-dialog-title"> Please login with defaults or use your own account:</DialogTitle>
+        <DialogContent style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
+
+          <TextField
+            InputProps={{
+              className: classes.input
+            }}
+            label="Federation URL"
+            defaultValue={this.state.federationUrl}
+
+            onChange={(event) => {
+              const federationUrl = event.target.value;
+              this.setState({ federationUrl });
+            }}
+            margin="normal"
+          />
+
+          <TextField
+            InputProps={{
+              className: classes.input
+            }}
+            label="Email"
+            defaultValue={this.state.email}
+
+            onChange={(event) => {
+              const email = event.target.value;
+              this.setState({ email });
+            }}
+            margin="normal"
+          />
+
+          <TextField
+            InputProps={{
+              className: classes.input
+            }}
+            label="Fabric"
+            defaultValue={this.state.fabric}
+
+            onChange={(event) => {
+              const fabric = event.target.value;
+              this.setState({ fabric });
+            }}
+            margin="normal"
+          />
+
+          <TextField type='password'
+            id="pass"
+            label="Password"
+            defaultValue={this.state.password}
+            InputProps={{
+              className: classes.input
+            }}
+            onChange={(event) => {
+              const password = event.target.value;
+              this.setState({ password });
+
+            }}
+            margin="normal"
+          />
+        </DialogContent>
