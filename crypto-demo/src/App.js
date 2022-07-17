@@ -231,3 +231,156 @@ class App extends Component {
     //     const { payload } = receiveMsg;
     //     if (receiveMsg && payload) {
     //       const decodedMsg = atob(payload);
+    //       const response = decodedMsg && JSON.parse(decodedMsg);
+    //       let collectionData = [...this.state.collectionData];
+    //       const newElem = makeCollectionData(response);
+    //       if (newElem) {
+    //         collectionData = [newElem, ...collectionData];
+    //       }
+    //       if (collectionData.length > 20) {
+    //         //remove more than 20 data points
+    //         collectionData = collectionData.slice(0, 20);
+    //       }
+    //       this.setState({ collectionData });
+    //     }
+
+
+    //   }
+    // }, this.state.selectedRegionUrl, `${collectionName}-sub${getRandomInt()}`);
+  }
+
+  async establishConnection(chartNum) {
+    const newChart = _.cloneDeep(this.state[chartNum]);
+    const { name } = this.state[chartNum];
+    const streamTopic = getQuoteStreamTopicName(name);
+    const stream = this.fabric.stream(streamTopic, false);
+    const consumerOTP = await stream.getOtp();
+    const consumer = stream.consumer(`${name}-sub${getRandomInt()}`,
+      this.state.selectedRegionUrl, {
+        otp: consumerOTP,
+      });
+
+    consumer.on("error", () => {
+      this.openSnackBar('Failed to establish WS connection');
+      console.log(`Failed to establish WS connection for ${streamTopic}`);
+    });
+
+    consumer.on("message", (msg) => {
+      const receiveMsg = JSON.parse(msg);
+      const { payload } = receiveMsg;
+      if (receiveMsg && payload) {
+        const decodedMsg = atob(payload);
+        const response = decodedMsg && JSON.parse(decodedMsg);
+        console.log("CHART CONSUMER MSG:", response);
+        this.setState({ [chartNum]: makeChartData(response, this.state[chartNum]) });
+      }
+    });
+
+    consumer.on("close", () => {
+      console.log(`Closing WS connection for ${streamTopic}`)
+    });
+
+    consumer.on("open", () => {
+      console.log(`Connection open for ${streamTopic}`)
+    });
+
+    /*
+    stream.consumer(`${name}-sub${getRandomInt()}`,this.state.selectedRegionUrl, {
+      onerror: () => {
+        this.openSnackBar('Failed to establish WS connection');
+        console.log(`Failed to establish WS connection for ${streamTopic}`);
+      },
+      onclose: () => console.log(`Closing WS connection for ${streamTopic}`),
+      onopen: () => console.log(`Connection open for ${streamTopic}`),
+      onmessage: (message) => {
+        const receiveMsg = JSON.parse(message);
+        const { payload } = receiveMsg;
+        if (receiveMsg && payload) {
+          const decodedMsg = atob(payload);
+          const response = decodedMsg && JSON.parse(decodedMsg);
+          console.log("CHART CONSUMER MSG:", response);
+          this.setState({ [chartNum]: makeChartData(response, this.state[chartNum]) });
+        }
+      }
+    })*/;
+
+    newChart.stream = stream;
+
+    return newChart;
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
+
+  handleClose() {
+    this.setState({ showSnackbar: false, snackbarText: '' });
+  }
+
+  openSnackBar(message) {
+    this.setState({ showSnackbar: true, snackbarText: message }, () => {
+      setTimeout(this.handleClose, 2000);
+    });
+  }
+
+  handleSearchTextChange(event) {
+    const text = event.target.value;
+    this.filterResults(text);
+  }
+
+  filterResults(text) {
+    this.setState({ showFiltered: !!text.trim() }, () => {
+      const filteredData = this.state.collectionData.filter((collection) => {
+        const upperCaseText = text.toUpperCase();
+        return (
+          collection.symbol.toUpperCase().includes(upperCaseText) ||
+          collection.trade_price.toUpperCase().includes(upperCaseText) ||
+          collection.trade_location.toUpperCase().includes(upperCaseText) ||
+          collection.quote_region.toUpperCase().includes(upperCaseText) ||
+          collection.timestamp.toUpperCase().includes(upperCaseText) ||
+          collection.trade_strategy.toUpperCase().includes(upperCaseText) ||
+          collection.trade_type.toUpperCase().includes(upperCaseText)
+        )
+      });
+      this.setState({ filteredData: filteredData });
+    });
+  }
+
+  renderCharts(chartNum) {
+    const { timestamp, ma, close } = this.state[chartNum];
+
+    const price = close[close.length - 1] || 0;
+    const priceInDecimal = convertToDecimal(price);
+    
+    let heading, subheading, priceLabel;
+    switch (chartNum) {
+      case CHART1:
+        heading = 'BTC-USD'
+        subheading = 'Coinbase Pro'
+        priceLabel = `$${priceInDecimal}`;
+        break;
+      case CHART2:
+        heading = 'BTC-EUR'
+        subheading = 'BitStamp'
+        priceLabel = `€${priceInDecimal}`;
+        break;
+      default:
+        heading = 'BTC-JPY'
+        subheading = 'Bitflyer'
+        priceLabel = `¥${priceInDecimal}`
+        break;
+    }
+
+    const chartLayout = {
+      margin: this.state.width >= 1920 ? { t: 10} : {
+        t: 5,
+        b: 5,
+        l: 40,
+        r: 5,
+        pad: 0
+      },
+      font: {
+        size: this.state.width >= 1920 ? 12 : 6,
+      },
+      showlegend: false,
+      title: undefined,
