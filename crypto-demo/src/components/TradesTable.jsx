@@ -59,3 +59,13 @@ function Table({ trades, onChangeFilter }) {
                 <td className="font-semibold font-source-code-pro py-[11px] 3xl:py-[16px] text-[14px] 3xl:text-[21px] 8xl:text-[32px]">
                   {trade.timestamp}
                 </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Table;
