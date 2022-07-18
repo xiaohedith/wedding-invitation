@@ -547,3 +547,100 @@ class App extends Component {
             margin="normal"
           />
         </DialogContent>
+
+        <DialogActions>
+          <Button
+            onClick={() => this.setState({
+              loginModal: false,
+            }, () => { this.login() })}
+            size="small" variant="text" color="primary">
+            <span className="actions">CONFIRM</span>
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
+  }
+
+  render() {
+    const { showFiltered, collectionData, filteredData, showSnackbar, snackbarText } = this.state;
+    const { classes } = this.props;
+    const collection = showFiltered ? filteredData : collectionData;
+    return (
+      <div>
+        <div className="bg-mm-gray-900 grid px-[12px] 3xl:px-0 3xl:grid-cols-12">
+          <div className="3xl:col-start-2 3xl:col-end-12">
+            <div className="lg:h-screen">
+              {/* Header */}
+              <div className="bg-transparent flex flex-row justify-between items-center h-[40px] 3xl:h-[64px] 8xl:h-[96px] text-white">
+                <img className="w-[100px] h-[27px] 3xl:w-[150px] 3xl:h-[40px] 8xl:w-[225px] 8xl:h-[60px]" src={Logomark} alt="Macrometa Logo"/>
+                <button className="border border-mm-gray-600 font-medium inline-flex items-center justify-center leading-[16px] 3xl:leading-[24px] 8xl:leading-[36px] my-[8px] 3xl:my-[12px] 8xl:my-[18px] rounded-lg text-[11px] 3xl:text-[16px] 8xl:text-[24px] w-[100px] 3xl:w-[150px] 8xl:w-[225px] h-[27px] 3xl:h-[40px] 8xl:h-[60px] text-center">
+                  {/* map-pin svg icon  */}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-[13px] h-[13px] 3xl:w-[20px] 3xl:h-[20px] 8xl:w-[30px] 8xl:h-[30px] text-mm-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                  <span>&nbsp;{this.state.selectedRegionName || "Region"}</span>
+                </button>
+              </div>
+
+              <div className="grid lg:grid-rows-2 h-[calc(100vh-40px)] 3xl:h-[calc(100vh-64px)] 8xl:h-[calc(100vh-96px)] ">
+                {/* Charts */}
+                <div className="grid lg:grid-cols-3 gap-4">
+                  {[CHART1, CHART2, CHART3].map((i) => this.renderCharts(i))}
+                </div>
+
+                {/* Trades Table */}
+                <TradesTable trades={collection} onChangeFilter={this.handleSearchTextChange}/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Snackbar
+          open={showSnackbar}
+          onClose={this.handleClose}
+          message={<span id="message-id">{snackbarText}</span>}
+        />
+
+        {this.renderLoginModal()}
+
+        {this.state.regionModal && this.renderRegionModal()}
+
+      </div>
+    );
+  }
+}
+
+const styles = theme => ({
+  root: {
+    backgroundColor: '#404040',
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: '100%'
+  },
+  tableHead: {
+    backgroundColor: BACKGROUND,
+    color: 'white'
+  },
+  tableBody: {
+    backgroundColor: BACKGROUND
+  },
+  headCell: {
+    color: 'white',
+    fontSize: '0.75em',
+    textAlign: 'center',
+    borderBottom: 'none'
+  },
+  tableCell: {
+    fontWeight: 700,
+    textAlign: 'center',
+    borderBottom: 'none',
+    fontSize: '16px'
+  },
+  input: {
+    backgroundColor: '#404040',
+    paddingLeft: '5px'
+  },
+
+});
+
+export default withStyles(styles)(App);
