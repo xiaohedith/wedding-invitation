@@ -45,4 +45,13 @@ export function register(config) {
           );
         });
       } else {
-        // Is not local host. Ju
+        // Is not local host. Just register service worker
+        registerValidSW(swUrl, config);
+      }
+    });
+  }
+}
+
+function registerValidSW(swUrl, config) {
+  navigator.serviceWorker
+   
