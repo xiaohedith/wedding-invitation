@@ -65,4 +65,9 @@ function registerValidSW(swUrl, config) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
-              console.log('New content is available; 
+              console.log('New content is available; please refresh.');
+
+              // Execute callback
+              if (config.onUpdate) {
+                config.onUpdate(registration);
+           
