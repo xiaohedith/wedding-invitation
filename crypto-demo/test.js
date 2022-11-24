@@ -12,4 +12,7 @@ logger.trace('Entering cheese testing');
         });
 }
 
-func
+function consumer(){
+  log4js.configure({
+        appenders: {
+            consumer: { type: 'file', filename: 'crypto-trader-consumer.log', maxLogSize: 20
