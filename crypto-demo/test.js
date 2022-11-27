@@ -15,4 +15,9 @@ logger.trace('Entering cheese testing');
 function consumer(){
   log4js.configure({
         appenders: {
-            consumer: { type: 'file', filename: 'crypto-trader-consumer.log', maxLogSize: 20
+            consumer: { type: 'file', filename: 'crypto-trader-consumer.log', maxLogSize: 20 }
+        },
+        categories: { default: { appenders: ['consumer'], level: 'info' } }
+        });
+	logger = log4js.getLogger('consumer');
+	logger.in
