@@ -20,4 +20,8 @@ function consumer(){
         categories: { default: { appenders: ['consumer'], level: 'info' } }
         });
 	logger = log4js.getLogger('consumer');
-	logger.in
+	logger.info("Consumer");
+}
+
+producer();
+consumer();
