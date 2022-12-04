@@ -17,4 +17,11 @@ whereas the strategy is kept in trades collection.
 */
 
 /**
-Testing the Stream Applicat
+Testing the Stream Application:
+    1. Publish the app
+       
+    2. Start the GUI against the same federation
+*/
+
+-- Streams for the http call requests
+------------
