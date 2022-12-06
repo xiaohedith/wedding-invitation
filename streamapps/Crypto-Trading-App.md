@@ -26,4 +26,4 @@ Testing the Stream Application:
 -- Streams for the http call requests
 -------------------------------------------------------------------------------------------------------------------------------------
 
-CREATE SINK UsdCryptoTraderRequestStream WITH (type='http-
+CREATE SINK UsdCryptoTraderRequestStream WITH (type='http-call', publisher.url='https://api.pro.coinbase.com/products/btc-usd/ticker', method='GET', headers="'User-Agent:c8cep'", sink.id='coinbase-ticker', map.type='json') (trigge
