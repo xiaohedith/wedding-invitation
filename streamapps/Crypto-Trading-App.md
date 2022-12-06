@@ -24,4 +24,6 @@ Testing the Stream Application:
 */
 
 -- Streams for the http call requests
-------------
+-------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE SINK UsdCryptoTraderRequestStream WITH (type='http-
