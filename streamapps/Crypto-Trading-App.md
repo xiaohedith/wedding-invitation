@@ -37,4 +37,6 @@ CREATE SINK JpyCryptoTraderRequestStream WITH (type='http-call', publisher.url='
 
 CREATE SOURCE UsdCryptoTraderTickerResponseStream WITH (type='http-call-response', sink.id='coinbase-ticker', http.status.code='200', map.type='json', map.enclosing.element='$.*') (time string, price string);
 
-CREATE SOURCE EurCryptoTraderTickerResp
+CREATE SOURCE EurCryptoTraderTickerResponseStream WITH (type='http-call-response', sink.id='bitstamp-ticker', http.status.code='200', map.type='json') (timestamp string, last string);
+
+CREATE SOURCE
