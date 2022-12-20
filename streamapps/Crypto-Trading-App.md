@@ -43,4 +43,6 @@ CREATE SOURCE JpyCryptoTraderTickerResponseStream WITH (type='http-call-response
 
 -- Streams for the close and average prices
 -------------------------------------------------------------------------------------------------------------------------------------
-CREATE SINK STREAM GLOBAL CryptoTraderQuotesAvgUSDNew(exchange string, quote_region string, symbol string, ma double, close double
+CREATE SINK STREAM GLOBAL CryptoTraderQuotesAvgUSDNew(exchange string, quote_region string, symbol string, ma double, close double, timestamp long);
+
+CREATE SINK STREAM GLOBAL CryptoTraderQuotesAvgEURNew(exchange string, quote_region string, symbol string, ma double, close double, ti
