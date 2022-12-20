@@ -42,4 +42,5 @@ CREATE SOURCE EurCryptoTraderTickerResponseStream WITH (type='http-call-response
 CREATE SOURCE JpyCryptoTraderTickerResponseStream WITH (type='http-call-response', sink.id='bitflyer-ticker', http.status.code='200', map.type='json') (timestamp string, ltp double);
 
 -- Streams for the close and average prices
-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+CREATE SINK STREAM GLOBAL CryptoTraderQuotesAvgUSDNew(exchange string, quote_region string, symbol string, ma double, close double
