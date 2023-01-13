@@ -52,4 +52,5 @@ CREATE SINK STREAM GLOBAL CryptoTraderQuotesAvgJPYNew(exchange string, quote_reg
 CREATE SINK TradesBuy WITH (type="logger", prefix='BUY') (exchange string, quote_region string, symbol string, timestamp long, trade_location string,
                           trade_price double, trade_strategy string, trade_type string);
 
-CREATE SINK TradesSell WITH (type="logger", prefix='SELL') (exchange string, quote_region stri
+CREATE SINK TradesSell WITH (type="logger", prefix='SELL') (exchange string, quote_region string, symbol string, timestamp long, trade_location string,
+                          trade_price double, trade_strategy string, trade_type string);                 
