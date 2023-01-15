@@ -60,4 +60,9 @@ CREATE TABLE GLOBAL trades(exchange string, quote_region string, symbol string, 
                           trade_price double, trade_strategy string, trade_type string);
                           
 -- Common trades store inserts
---------------------------------------------------------
+-------------------------------------------------------------------------------
+INSERT INTO trades
+SELECT exchange, quote_region, symbol, timestamp, trade_location,
+          trade_price, trade_strategy, trade_type
+FROM TradesBuy;
+
