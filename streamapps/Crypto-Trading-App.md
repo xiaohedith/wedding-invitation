@@ -57,4 +57,7 @@ CREATE SINK TradesSell WITH (type="logger", prefix='SELL') (exchange string, quo
 
 -- Common trades store
 CREATE TABLE GLOBAL trades(exchange string, quote_region string, symbol string, timestamp long, trade_location string,
-               
+                          trade_price double, trade_strategy string, trade_type string);
+                          
+-- Common trades store inserts
+--------------------------------------------------------
