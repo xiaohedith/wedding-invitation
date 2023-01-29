@@ -66,3 +66,7 @@ SELECT exchange, quote_region, symbol, timestamp, trade_location,
           trade_price, trade_strategy, trade_type
 FROM TradesBuy;
 
+INSERT INTO trades
+SELECT exchange, quote_region, symbol, timestamp, trade_location,
+          trade_price, trade_strategy, trade_type
+FROM TradesS
