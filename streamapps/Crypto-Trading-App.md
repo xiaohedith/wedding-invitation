@@ -69,4 +69,7 @@ FROM TradesBuy;
 INSERT INTO trades
 SELECT exchange, quote_region, symbol, timestamp, trade_location,
           trade_price, trade_strategy, trade_type
-FROM TradesS
+FROM TradesSell;
+                          
+-- Fire Coinbase Pro BTC/USD requests initiated by a trigger
+-----------------------------------------------------------------
