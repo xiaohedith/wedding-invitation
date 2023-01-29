@@ -72,4 +72,9 @@ SELECT exchange, quote_region, symbol, timestamp, trade_location,
 FROM TradesSell;
                           
 -- Fire Coinbase Pro BTC/USD requests initiated by a trigger
------------------------------------------------------------------
+-------------------------------------------------------------------------------
+INSERT INTO UsdCryptoTraderRequestStream
+SELECT time:currentTimestamp() as triggered_time 
+FROM CryptoTraderEventsTrigger;
+
+-- Fire Bitstamp BTC/E
