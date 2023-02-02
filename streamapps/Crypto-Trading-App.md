@@ -77,4 +77,7 @@ INSERT INTO UsdCryptoTraderRequestStream
 SELECT time:currentTimestamp() as triggered_time 
 FROM CryptoTraderEventsTrigger;
 
--- Fire Bitstamp BTC/E
+-- Fire Bitstamp BTC/EUR requests initiated by a trigger
+-------------------------------------------------------------------------------
+INSERT INTO EurCryptoTraderRequestStream
+SELECT tim
