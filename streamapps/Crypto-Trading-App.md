@@ -84,4 +84,7 @@ SELECT time:currentTimestamp() as triggered_time
 FROM CryptoTraderEventsTrigger;
 
 -- Fire Bitflyer BTC/JPY requests initiated by a trigger
-----------------------------
+-------------------------------------------------------------------------------
+INSERT INTO JpyCryptoTraderRequestStream
+SELECT time:currentTimestamp() as triggered_time 
+FROM CryptoTraderEvents
