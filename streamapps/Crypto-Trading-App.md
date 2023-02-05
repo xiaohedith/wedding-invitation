@@ -80,4 +80,8 @@ FROM CryptoTraderEventsTrigger;
 -- Fire Bitstamp BTC/EUR requests initiated by a trigger
 -------------------------------------------------------------------------------
 INSERT INTO EurCryptoTraderRequestStream
-SELECT tim
+SELECT time:currentTimestamp() as triggered_time 
+FROM CryptoTraderEventsTrigger;
+
+-- Fire Bitflyer BTC/JPY requests initiated by a trigger
+----------------------------
