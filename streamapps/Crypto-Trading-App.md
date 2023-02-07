@@ -91,4 +91,7 @@ FROM CryptoTraderEventsTrigger;
 
 -- Coinbase Pro BTC/USD strategy generation
 -------------------------------------------------------------------------------------------------
-@info(name='Query for
+@info(name='Query for BTC/USD close and average prices within moving 10 events windows')
+INSERT INTO CryptoTraderQuotesAvgUSDNew
+SELECT "Coinbase Pro" as exchange, "USA" as quote_region,
+        "BTC/USD
