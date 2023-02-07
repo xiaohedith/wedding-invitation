@@ -87,4 +87,8 @@ FROM CryptoTraderEventsTrigger;
 -------------------------------------------------------------------------------
 INSERT INTO JpyCryptoTraderRequestStream
 SELECT time:currentTimestamp() as triggered_time 
-FROM CryptoTraderEvents
+FROM CryptoTraderEventsTrigger;
+
+-- Coinbase Pro BTC/USD strategy generation
+-------------------------------------------------------------------------------------------------
+@info(name='Query for
