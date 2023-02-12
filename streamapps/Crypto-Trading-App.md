@@ -98,4 +98,8 @@ SELECT "Coinbase Pro" as exchange, "USA" as quote_region,
         time:timestampInMilliseconds()/1000 as timestamp
 FROM UsdCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-west'] WINDOW SLIDING_LENGTH(10);
 
-@info(name='Query for BTC/USD trading strategy BUY'
+@info(name='Query for BTC/USD trading strategy BUY')
+INSERT INTO TradesBuy
+SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
+       context:getVar('region') as trade_location,
+       e2.clos
