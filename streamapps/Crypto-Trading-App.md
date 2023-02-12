@@ -94,4 +94,6 @@ FROM CryptoTraderEventsTrigger;
 @info(name='Query for BTC/USD close and average prices within moving 10 events windows')
 INSERT INTO CryptoTraderQuotesAvgUSDNew
 SELECT "Coinbase Pro" as exchange, "USA" as quote_region,
-        "BTC/USD
+        "BTC/USD" as symbol, avg(convert(price, 'double')) as ma, convert(price, 'double') as close, 
+        time:timestampInMilliseconds()/1000 as timestamp
+FROM UsdCryptoTr
