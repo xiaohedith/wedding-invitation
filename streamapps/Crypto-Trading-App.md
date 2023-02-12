@@ -96,4 +96,6 @@ INSERT INTO CryptoTraderQuotesAvgUSDNew
 SELECT "Coinbase Pro" as exchange, "USA" as quote_region,
         "BTC/USD" as symbol, avg(convert(price, 'double')) as ma, convert(price, 'double') as close, 
         time:timestampInMilliseconds()/1000 as timestamp
-FROM UsdCryptoTr
+FROM UsdCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-west'] WINDOW SLIDING_LENGTH(10);
+
+@info(name='Query for BTC/USD trading strategy BUY'
