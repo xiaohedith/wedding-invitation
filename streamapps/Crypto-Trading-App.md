@@ -110,4 +110,8 @@ FROM every e1=CryptoTraderQuotesAvgUSDNew[e1.close < e1.ma], e2=CryptoTraderQuot
 INSERT INTO TradesSell
 SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
        context:getVar('region') as trade_location,
-       e2.close as trade_price, "MA Trading" as trade_st
+       e2.close as trade_price, "MA Trading" as trade_strategy,
+          'SELL' as trade_type
+FROM every e1=CryptoTraderQuotesAvgUSDNew[e1.close > e1.ma], e2=CryptoTraderQuotesAvgUSDNew[e2.close < e2.ma];
+
+DELETE trades for ex
