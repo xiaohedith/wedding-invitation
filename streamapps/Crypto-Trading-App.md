@@ -116,4 +116,8 @@ FROM every e1=CryptoTraderQuotesAvgUSDNew[e1.close > e1.ma], e2=CryptoTraderQuot
 
 DELETE trades for expired events 
        ON trades.trade_location == trade_location and trades.symbol == symbol and trades.timestamp < timestamp 
-SELECT context:getVar('region') as trade_location, s
+SELECT context:getVar('region') as trade_location, symbol, timestamp
+FROM CryptoTraderQuotesAvgUSDNew WINDOW SLIDING_TIME(10);
+
+-- Bitstamp BTC/EUR trading strategy generation
+-------------------------------
