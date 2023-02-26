@@ -120,4 +120,5 @@ SELECT context:getVar('region') as trade_location, symbol, timestamp
 FROM CryptoTraderQuotesAvgUSDNew WINDOW SLIDING_TIME(10);
 
 -- Bitstamp BTC/EUR trading strategy generation
--------------------------------
+-----------------------------------------------------------------------------------------
+@info(name='Query for BTC/EUR close and average prices within moving 10 events 
