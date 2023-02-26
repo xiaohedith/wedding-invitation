@@ -121,4 +121,7 @@ FROM CryptoTraderQuotesAvgUSDNew WINDOW SLIDING_TIME(10);
 
 -- Bitstamp BTC/EUR trading strategy generation
 -----------------------------------------------------------------------------------------
-@info(name='Query for BTC/EUR close and average prices within moving 10 events 
+@info(name='Query for BTC/EUR close and average prices within moving 10 events windows')
+INSERT INTO CryptoTraderQuotesAvgEURNew
+SELECT "Bitstamp" as exchange, "Europe" as quote_region,
+        "BTC/EUR" as symbol, avg(convert(last, 'double'))
