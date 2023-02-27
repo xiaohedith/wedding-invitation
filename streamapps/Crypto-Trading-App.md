@@ -124,4 +124,6 @@ FROM CryptoTraderQuotesAvgUSDNew WINDOW SLIDING_TIME(10);
 @info(name='Query for BTC/EUR close and average prices within moving 10 events windows')
 INSERT INTO CryptoTraderQuotesAvgEURNew
 SELECT "Bitstamp" as exchange, "Europe" as quote_region,
-        "BTC/EUR" as symbol, avg(convert(last, 'double'))
+        "BTC/EUR" as symbol, avg(convert(last, 'double')) as ma, convert(last, 'double') as close, 
+        time:timestampInMilliseconds()/1000 as timestamp
+FROM EurCryptoTraderTickerResponseStre
