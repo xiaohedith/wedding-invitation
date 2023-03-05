@@ -126,4 +126,8 @@ INSERT INTO CryptoTraderQuotesAvgEURNew
 SELECT "Bitstamp" as exchange, "Europe" as quote_region,
         "BTC/EUR" as symbol, avg(convert(last, 'double')) as ma, convert(last, 'double') as close, 
         time:timestampInMilliseconds()/1000 as timestamp
-FROM EurCryptoTraderTickerResponseStre
+FROM EurCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-west'] WINDOW SLIDING_LENGTH(10);
+
+@info(name='Query for BTC/EUR trading strategy BUY')
+INSERT INTO TradesBuy
+SELECT
