@@ -130,4 +130,6 @@ FROM EurCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-we
 
 @info(name='Query for BTC/EUR trading strategy BUY')
 INSERT INTO TradesBuy
-SELECT
+SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
+       context:getVar('region') as trade_location,
+       e2.close as trade_price, "MA Trading" as trade_str
