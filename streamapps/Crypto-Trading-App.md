@@ -132,4 +132,8 @@ FROM EurCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-we
 INSERT INTO TradesBuy
 SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
        context:getVar('region') as trade_location,
-       e2.close as trade_price, "MA Trading" as trade_str
+       e2.close as trade_price, "MA Trading" as trade_strategy,
+          'BUY' as trade_type
+FROM every e1=CryptoTraderQuotesAvgEURNew[e1.close < e1.ma], e2=CryptoTraderQuotesAvgEURNew[e2.close > e2.ma];
+
+@info(name
