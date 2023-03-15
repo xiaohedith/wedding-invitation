@@ -139,4 +139,7 @@ FROM every e1=CryptoTraderQuotesAvgEURNew[e1.close < e1.ma], e2=CryptoTraderQuot
 @info(name='Query for BTC/EUR trading strategy SELL')
 INSERT INTO TradesSell
 SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
-       context:getVar('region
+       context:getVar('region') as trade_location,
+       e2.close as trade_price, "MA Trading" as trade_strategy,
+          'SELL' as trade_type
+FROM every e1=CryptoTraderQuotesAvgEURNew[e1.close > e1.ma], e2=Cry
