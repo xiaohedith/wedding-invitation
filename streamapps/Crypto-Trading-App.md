@@ -142,4 +142,7 @@ SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
        context:getVar('region') as trade_location,
        e2.close as trade_price, "MA Trading" as trade_strategy,
           'SELL' as trade_type
-FROM every e1=CryptoTraderQuotesAvgEURNew[e1.close > e1.ma], e2=Cry
+FROM every e1=CryptoTraderQuotesAvgEURNew[e1.close > e1.ma], e2=CryptoTraderQuotesAvgEURNew[e2.close < e2.ma];
+
+DELETE trades for expired events 
+       ON trades.trade_location == trade_location and trades.symbol == symb
