@@ -149,4 +149,6 @@ DELETE trades for expired events
 SELECT context:getVar('region') as trade_location, symbol, timestamp
 FROM CryptoTraderQuotesAvgEURNew WINDOW SLIDING_TIME(10);
 
--- Bi
+-- Bitflyer BTC/JPY strategy generation
+----------------------------------------------------------------------------------------------
+@info(name='Query for BTC/JPY close and average p
