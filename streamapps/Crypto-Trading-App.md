@@ -156,4 +156,8 @@ INSERT INTO CryptoTraderQuotesAvgJPYNew
 SELECT "Bitflyer" as exchange, "Asia-Pacific" as quote_region,
         "BTC/JPY" as symbol, avg(ltp) as ma, ltp as close, 
         time:timestampInMilliseconds()/1000 as timestamp
-FROM JpyCryptoTraderTickerResponseStream[context:getVar('region') == 
+FROM JpyCryptoTraderTickerResponseStream[context:getVar('region') == 'play-us-west'] WINDOW SLIDING_LENGTH(10);
+
+@info(name='Query for BTC/JPY trading strategy BUY')
+INSERT INTO TradesBuy
+SELECT e2.exchange, e2.quote_region, e
