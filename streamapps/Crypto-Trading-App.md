@@ -154,4 +154,6 @@ FROM CryptoTraderQuotesAvgEURNew WINDOW SLIDING_TIME(10);
 @info(name='Query for BTC/JPY close and average prices within moving 10 events windows')
 INSERT INTO CryptoTraderQuotesAvgJPYNew
 SELECT "Bitflyer" as exchange, "Asia-Pacific" as quote_region,
-        "BTC/
+        "BTC/JPY" as symbol, avg(ltp) as ma, ltp as close, 
+        time:timestampInMilliseconds()/1000 as timestamp
+FROM JpyCryptoTraderTickerResponseStream[context:getVar('region') == 
