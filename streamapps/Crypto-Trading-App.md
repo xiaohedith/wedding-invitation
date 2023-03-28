@@ -164,4 +164,6 @@ SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
        context:getVar('region') as trade_location,
        e2.close as trade_price, "MA Trading" as trade_strategy,
           'BUY' as trade_type
-FR
+FROM every e1=CryptoTraderQuotesAvgJPYNew[e1.close < e1.ma], e2=CryptoTraderQuotesAvgJPYNew[e2.close > e2.ma];
+
+@info(name='Query for BTC/JPY trading s
