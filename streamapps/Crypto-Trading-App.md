@@ -175,4 +175,8 @@ SELECT e2.exchange, e2.quote_region, e2.symbol, e2.timestamp,
 FROM every e1=CryptoTraderQuotesAvgJPYNew[e1.close > e1.ma], e2=CryptoTraderQuotesAvgJPYNew[e2.close < e2.ma];
  
 DELETE trades for expired events 
-       ON trades.trade_location == trade_location and trades.symbol == symbol and trades.timestamp < timestam
+       ON trades.trade_location == trade_location and trades.symbol == symbol and trades.timestamp < timestamp 
+SELECT context:getVar('region') as trade_location, symbol, timestamp
+FROM CryptoTraderQuotesAvgJPYNew WINDOW SLIDING_TIME(10);
+
+```
